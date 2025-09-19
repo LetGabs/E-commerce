@@ -618,16 +618,35 @@
   </div>
 </div>
 
+<section class="offcanvas offcanvas-end" tabindex="-1" id="Carrinho" aria-labelledby="carrinhoLabel"> <!-- Utilização do Bootstrap para abrir o carrinho na lateral -->
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="carrinhoLabel">Carrinho de Compras</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button> 
+  </div>
 
-
-
+  <div class="offcanvas-body d-flex flex-column"> 
+    <div id="itensCarrinho" class="list-group mb-3"></div>
+    
+    <div class="mt-auto">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <strong>Total:</strong>
+        <strong id="totalCarrinho">R$ 0,00</strong>
+      </div>
+      <div class="mt-auto">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <button id="btnLimparCarrinho" class="btn btn-outline-secondary flex-grow-1">Limpar</button>
+          <button id="btnFinalizarCompra" class="btn btn-primary flex-grow-1">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Footer -->
     <footer class="text-center py-4">
         <p>© 2024 Livraria Terra. Todos os direitos reservados.</p>
         <p>Desenvolvido por <a href="#" target="_blank">Sua Empresa</a></p>
     </footer>
-
+    <script src="carrinho.js"
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
