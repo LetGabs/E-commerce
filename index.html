@@ -619,9 +619,9 @@
 </div>
 
 <!-- CARRINHO -->
-<section class="offcanvas offcanvas-end" tabindex="-1" id="Carrinho" aria-labelledby="carrinhoLabel"> <!-- Utilização do Bootstrap para abrir o carrinho na lateral -->
+<section class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrinho" aria-labelledby="offcanvascarrinhoLabel"> <!-- Utilização do Bootstrap para abrir o carrinho na lateral -->
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="carrinhoLabel">Carrinho de Compras</h5>
+    <h5 class="offcanvas-title" id="offcanvasCarrinhoLabel">Carrinho de Compras</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button> 
   </div>
 
@@ -633,8 +633,7 @@
         <strong>Total:</strong>
         <strong id="total-carrinho">R$ 0,00</strong>
       </div>
-      <div class="mt-auto">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex gap-2">
           <button id="btnLimparCarrinho" class="btn btn-outline-secondary flex-grow-1">Limpar</button>
           <button id="btnFinalizarCompra" class="btn btn-primary flex-grow-1">Finalizar Compra</button>
       </div>
