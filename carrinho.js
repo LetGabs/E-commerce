@@ -273,6 +273,6 @@
       alert("Seu carrinho está vazio.");
       return;
     }
-    alert("Compra finalizada! Total: " + centavosParaReal(total));
+    alert("LEVAR PARA LARA Total: " + centavosParaReal(total));
   });
 })();
