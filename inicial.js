@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (filtrados.length > 0) {
       filtrados.forEach(livro => {
-        const col = document.createElement('div');
-        col.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
-        col.appendChild(livro.element.cloneNode(true));
-        gridContainer.appendChild(col);
+        const wrapper = document.createElement('div');
+        wrapper.className = 'book-card-wrapper';
+        wrapper.appendChild(livro.element.cloneNode(true));
+        gridContainer.appendChild(wrapper);
       });
 
       // Reaplica eventos nos cards clonados
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
       gridContainer.appendChild(msg);
     }
 
-    // Só ativa o modo filtrado se houver busca, categoria ou ordenação
+    // Só ativa o modo filtrado se houver busca, categoria ou ordenação válida
     const filtroAtivo = (
       texto.length > 0 ||
       categoria.length > 0 ||
@@ -89,9 +89,9 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     if (filtroAtivo) {
-      gridContainer.className = 'container-lg row g-3 my-5';
+      gridContainer.className = 'books-grid my-5';
       secoes.forEach(sec => sec.style.display = 'none');
-      gridContainer.style.display = 'flex';
+      gridContainer.style.display = 'grid';
     } else {
       gridContainer.className = 'container-lg row my-5';
       secoes.forEach(sec => sec.style.display = 'block');
