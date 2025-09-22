@@ -165,6 +165,30 @@
 
       this.elTotal.textContent = centavosParaReal(this.totalCentavos());
     }
+    //atualiza número de itens no ícone do carrinho
+    _updateBadges() {
+    const count = this.totalItens(); 
+    const btns = [
+      document.getElementById("btnAbrirCarrinho"),
+      document.getElementById("btnAbrirCarrinhoNav"),
+    ];
+    btns.forEach((btn) => {
+      if (!btn) return;
+      let badge = btn.querySelector(".cart-badge");
+      if (!badge) {
+        badge = document.createElement("span");
+        badge.className = "badge bg-danger cart-badge";
+        badge.style.fontSize = "0.7rem";
+        badge.style.position = "absolute";
+        badge.style.top = "-6px";
+        badge.style.right = "-6px";
+        btn.appendChild(badge);
+      }
+      badge.textContent = count;
+      badge.style.display = count > 0 ? "inline-flex" : "none";
+  });
+}
+
   }
 
   // --- Instância ---
