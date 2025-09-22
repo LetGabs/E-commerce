@@ -2,633 +2,332 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Livraria Terra - Catálogo Moderno</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Livraria Terra - Catálogo Moderno</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg shadow-sm">
-        <div class="container-lg">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <i class="bi bi-book"></i>
-                <span>Livraria Terra</span>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container-lg">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <i class="bi bi-book"></i>
+        <span>Livraria Terra</span>
+      </a>
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <div class="d-none d-md-block me-3">
+          <input id="searchInput" class="search-input" type="search" placeholder="Buscar títulos, autores..." aria-label="Pesquisar" />
+        </div>
+        <button id="btnAbrirCarrinho" class="btn btn-icon" aria-label="Abrir carrinho">
+          <i class="bi bi-cart"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto fs-5">
+          <li class="nav-item">
+            <a class="nav-link active d-flex align-items-center" href="#catalogo">
+              <i class="bi bi-list-ul me-2"></i> Catálogo
             </a>
-            <div class="d-flex align-items-center gap-2 ms-auto">
-                <div class="d-none d-md-block me-3">
-                    <input class="search-input" type="search" placeholder="Buscar títulos, autores..."
-                        aria-label="Pesquisar" />
-                </div>
-                <button id="btnAbrirCarrinho" class="btn btn-icon" aria-label="Abrir carrinho">
-                    <i class="bi bi-cart"></i>
-                </button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto fs-5">
-                    <li class="nav-item">
-                        <a class="nav-link active d-flex align-items-center" href="#catalogo">
-                            <i class="bi bi-list-ul me-2"></i> Catálogo
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="btnAbrirCarrinhoNav" class="nav-link d-flex align-items-center"
-                            href="javascript:void(0)">
-                            <i class="bi bi-cart me-2"></i> Carrinho
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+          </li>
+          <li class="nav-item">
+            <a id="btnAbrirCarrinhoNav" class="nav-link d-flex align-items-center" href="javascript:void(0)">
+              <i class="bi bi-cart me-2"></i> Carrinho
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero -->
-    <section class="hero container-lg">
-        <div class="hero-text">
-            <h1>Descubra seu próximo livro favorito</h1>
-            <p>Explore nosso catálogo cuidadosamente selecionado com os melhores títulos para todos os gostos.</p>
-        </div>
-        <div class="cta">
-            <button class="btn-hero" id="btnPromo">Veja promoções</button>
-        </div>
+  <!-- Hero -->
+  <section class="hero container-lg">
+    <div class="hero-text">
+      <h1>Descubra seu próximo livro favorito</h1>
+      <p>Explore nosso catálogo cuidadosamente selecionado com os melhores títulos para todos os gostos.</p>
+    </div>
+    <div class="cta">
+      <button class="btn-hero" id="btnPromo">Veja promoções</button>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <div class="container-lg my-4">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <select id="filtroCategoria" class="form-select">
+          <option value="">Todas as categorias</option>
+          <option value="Ficção">Ficção</option>
+          <option value="Não Ficção">Não Ficção</option>
+          <option value="Infantil">Infantil</option>
+          <option value="Autoajuda">Autoajuda</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <select id="ordenacao" class="form-select">
+          <option value="">Ordenar</option>
+          <option value="preco-asc">Preço: menor → maior</option>
+          <option value="preco-desc">Preço: maior → menor</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <main class="container-lg my-5" id="catalogo">
+
+    <!-- ================= FICÇÃO ================= -->
+    <section class="mb-5 secao-original">
+      <h2 class="section-title"><i class="bi bi-book-half me-2"></i> Ficção</h2>
+      <div class="books-grid row">
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=1" alt="O Segredo das Árvores" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">O Segredo das Árvores</h5>
+              <p class="book-author">Autor Exemplo</p>
+              <div class="book-footer">
+                <span class="badge-genre">Ficção</span>
+                <div class="price">R$ 39,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=2" alt="As Sombras do Tempo" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">As Sombras do Tempo</h5>
+              <p class="book-author">Maria Silva</p>
+              <div class="book-footer">
+                <span class="badge-genre">Ficção</span>
+                <div class="price">R$ 42,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=3" alt="O Último Reino" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">O Último Reino</h5>
+              <p class="book-author">Carlos Andrade</p>
+              <div class="book-footer">
+                <span class="badge-genre">Ficção</span>
+                <div class="price">R$ 49,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=4" alt="Mar de Estrelas" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">Mar de Estrelas</h5>
+              <p class="book-author">Fernanda Costa</p>
+              <div class="book-footer">
+                <span class="badge-genre">Ficção</span>
+                <div class="price">R$ 54,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- Conteúdo principal -->
-    <main class="container-lg my-5" id="catalogo">
-
-        <!-- ================= FICÇÃO ================= -->
-        <section class="mb-5">
-            <h2 class="section-title"><i class="bi bi-book-half me-2"></i> Ficção</h2>
-            <div class="books-grid">
-                <!-- 4 livros ficção -->
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro1"><img
-                            src="https://picsum.photos/300/400?random=1" alt="O Segredo das Árvores" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">O Segredo das Árvores</h5>
-                            <p class="book-author">Autor Exemplo</p>
-                            <div class="book-footer"><span class="badge-genre">Ficção</span>
-                                <div class="price">R$ 39,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro2"><img
-                            src="https://picsum.photos/300/400?random=2" alt="As Sombras do Tempo" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">As Sombras do Tempo</h5>
-                            <p class="book-author">Maria Silva</p>
-                            <div class="book-footer"><span class="badge-genre">Ficção</span>
-                                <div class="price">R$ 42,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro3"><img
-                            src="https://picsum.photos/300/400?random=3" alt="O Último Reino" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">O Último Reino</h5>
-                            <p class="book-author">Carlos Andrade</p>
-                            <div class="book-footer"><span class="badge-genre">Ficção</span>
-                                <div class="price">R$ 49,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro4"><img
-                            src="https://picsum.photos/300/400?random=4" alt="Mar de Estrelas" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">Mar de Estrelas</h5>
-                            <p class="book-author">Fernanda Costa</p>
-                            <div class="book-footer"><span class="badge-genre">Ficção</span>
-                                <div class="price">R$ 54,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+    <!-- ================= NÃO FICÇÃO ================= -->
+    <section class="mb-5 secao-original">
+      <h2 class="section-title"><i class="bi bi-journal-bookmark me-2"></i> Não Ficção</h2>
+      <div class="books-grid row">
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=5" alt="História da Tecnologia" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">História da Tecnologia</h5>
+              <p class="book-author">Daniel Prado</p>
+              <div class="book-footer">
+                <span class="badge-genre">Não Ficção</span>
+                <div class="price">R$ 59,90</div>
+              </div>
             </div>
-        </section>
-
-        <!-- ================= NÃO FICÇÃO ================= -->
-        <section class="mb-5">
-            <h2 class="section-title"><i class="bi bi-journal-bookmark me-2"></i> Não Ficção</h2>
-            <div class="books-grid">
-                <!-- 4 livros não ficção -->
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro5"><img
-                            src="https://picsum.photos/300/400?random=5" alt="História da Tecnologia"
-                            class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">História da Tecnologia</h5>
-                            <p class="book-author">Daniel Prado</p>
-                            <div class="book-footer"><span class="badge-genre">Não Ficção</span>
-                                <div class="price">R$ 59,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro6"><img
-                            src="https://picsum.photos/300/400?random=6" alt="O Mundo Real" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">O Mundo Real</h5>
-                            <p class="book-author">Ana Souza</p>
-                            <div class="book-footer"><span class="badge-genre">Não Ficção</span>
-                                <div class="price">R$ 64,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro7"><img
-                            src="https://picsum.photos/300/400?random=7" alt="Ciência e Futuro" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">Ciência e Futuro</h5>
-                            <p class="book-author">Roberto Lima</p>
-                            <div class="book-footer"><span class="badge-genre">Não Ficção</span>
-                                <div class="price">R$ 72,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro8"><img
-                            src="https://picsum.photos/300/400?random=8" alt="Histórias da Vida" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">Histórias da Vida</h5>
-                            <p class="book-author">Clara Martins</p>
-                            <div class="book-footer"><span class="badge-genre">Não Ficção</span>
-                                <div class="price">R$ 58,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=6" alt="O Mundo Real" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">O Mundo Real</h5>
+              <p class="book-author">Ana Souza</p>
+              <div class="book-footer">
+                <span class="badge-genre">Não Ficção</span>
+                <div class="price">R$ 64,90</div>
+              </div>
             </div>
-        </section>
-
-        <!-- ================= INFANTIL ================= -->
-        <section class="mb-5">
-            <h2 class="section-title"><i class="bi bi-emoji-smile me-2"></i> Infantil</h2>
-            <div class="books-grid">
-                <!-- 4 livros infantil -->
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro9"><img
-                            src="https://picsum.photos/300/400?random=9" alt="Aventura no Espaço" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">Aventura no Espaço</h5>
-                            <p class="book-author">Joana Melo</p>
-                            <div class="book-footer"><span class="badge-genre">Infantil</span>
-                                <div class="price">R$ 29,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro10"><img
-                            src="https://picsum.photos/300/400?random=10" alt="O Castelo Encantado" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">O Castelo Encantado</h5>
-                            <p class="book-author">Pedro Gomes</p>
-                            <div class="book-footer"><span class="badge-genre">Infantil</span>
-                                <div class="price">R$ 32,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro11"><img
-                            src="https://picsum.photos/300/400?random=11" alt="Os Amigos da Floresta"
-                            class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">Os Amigos da Floresta</h5>
-                            <p class="book-author">Lucas Ferreira</p>
-                            <div class="book-footer"><span class="badge-genre">Infantil</span>
-                                <div class="price">R$ 27,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro12"><img
-                            src="https://picsum.photos/300/400?random=12" alt="Magia das Cores" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">Magia das Cores</h5>
-                            <p class="book-author">Patrícia Alves</p>
-                            <div class="book-footer"><span class="badge-genre">Infantil</span>
-                                <div class="price">R$ 34,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=7" alt="Ciência e Futuro" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">Ciência e Futuro</h5>
+              <p class="book-author">Roberto Lima</p>
+              <div class="book-footer">
+                <span class="badge-genre">Não Ficção</span>
+                <div class="price">R$ 72,90</div>
+              </div>
             </div>
-        </section>
-
-        <!-- ================= AUTOAJUDA ================= -->
-        <section class="mb-5">
-            <h2 class="section-title"><i class="bi bi-lightbulb me-2"></i> Autoajuda</h2>
-            <div class="books-grid">
-                <!-- 4 livros autoajuda -->
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro13"><img
-                            src="https://picsum.photos/300/400?random=13" alt="O Poder do Hábito" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">O Poder do Hábito</h5>
-                            <p class="book-author">Charles Duhigg</p>
-                            <div class="book-footer"><span class="badge-genre">Autoajuda</span>
-                                <div class="price">R$ 44,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro14"><img
-                            src="https://picsum.photos/300/400?random=14" alt="A Coragem de Ser Imperfeito"
-                            class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">A Coragem de Ser Imperfeito</h5>
-                            <p class="book-author">Brené Brown</p>
-                            <div class="book-footer"><span class="badge-genre">Autoajuda</span>
-                                <div class="price">R$ 49,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro15"><img
-                            src="https://picsum.photos/300/400?random=15" alt="Desperte o Gigante Interior"
-                            class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">Desperte o Gigante Interior</h5>
-                            <p class="book-author">Tony Robbins</p>
-                            <div class="book-footer"><span class="badge-genre">Autoajuda</span>
-                                <div class="price">R$ 59,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="book-wrapper">
-                    <div class="book-card" data-bs-toggle="modal" data-bs-target="#modalLivro16"><img
-                            src="https://picsum.photos/300/400?random=16" alt="Mindset" class="book-cover">
-                        <div class="book-info">
-                            <h5 class="book-title">Mindset</h5>
-                            <p class="book-author">Carol Dweck</p>
-                            <div class="book-footer"><span class="badge-genre">Autoajuda</span>
-                                <div class="price">R$ 52,90</div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=8" alt="Histórias da Vida" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">Histórias da Vida</h5>
+              <p class="book-author">Clara Martins</p>
+              <div class="book-footer">
+                <span class="badge-genre">Não Ficção</span>
+                <div class="price">R$ 58,90</div>
+              </div>
             </div>
-        </section>
-    </main>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <!-- ========== MODAIS (1 até 16) ========== -->
-    <!-- Modal Livro 1 -->
-<div class="modal fade" id="modalLivro1" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">O Segredo das Árvores</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <!-- ================= INFANTIL ================= -->
+    <section class="mb-5 secao-original">
+      <h2 class="section-title"><i class="bi bi-emoji-smile me-2"></i> Infantil</h2>
+      <div class="books-grid row">
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=9" alt="Aventura no Espaço" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">Aventura no Espaço</h5>
+              <p class="book-author">Joana Melo</p>
+              <div class="book-footer">
+                <span class="badge-genre">Infantil</span>
+                <div class="price">R$ 29,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=10" alt="O Mundo Encantado" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">O Mundo Encantado</h5>
+              <p class="book-author">Lucas Pereira</p>
+              <div class="book-footer">
+                <span class="badge-genre">Infantil</span>
+                <div class="price">R$ 34,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=11" alt="Contos da Floresta" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">Contos da Floresta</h5>
+              <p class="book-author">Mariana Lima</p>
+              <div class="book-footer">
+                <span class="badge-genre">Infantil</span>
+                <div class="price">R$ 27,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=12" alt="Brincando com os Animais" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">Brincando com os Animais</h5>
+              <p class="book-author">Ana Clara</p>
+              <div class="book-footer">
+                <span class="badge-genre">Infantil</span>
+                <div class="price">R$ 31,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=1" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Autor Exemplo</p>
-          <p><strong>Gênero:</strong> Ficção</p>
-          <p>Um romance envolvente sobre segredos da natureza e mistérios familiares.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 39,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- Modal Livro 2 -->
-<div class="modal fade" id="modalLivro2" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">As Sombras do Tempo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <!-- ================= AUTOAJUDA ================= -->
+    <section class="mb-5 secao-original">
+      <h2 class="section-title"><i class="bi bi-lightbulb me-2"></i> Autoajuda</h2>
+      <div class="books-grid row">
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=13" alt="O Poder do Hábito" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">O Poder do Hábito</h5>
+              <p class="book-author">Charles Duhigg</p>
+              <div class="book-footer">
+                <span class="badge-genre">Autoajuda</span>
+                <div class="price">R$ 39,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=14" alt="Como Fazer Amigos" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">Como Fazer Amigos</h5>
+              <p class="book-author">Dale Carnegie</p>
+              <div class="book-footer">
+                <span class="badge-genre">Autoajuda</span>
+                <div class="price">R$ 42,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=15" alt="Mindset" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">Mindset</h5>
+              <p class="book-author">Carol Dweck</p>
+              <div class="book-footer">
+                <span class="badge-genre">Autoajuda</span>
+                <div class="price">R$ 45,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="book-wrapper col-md-3">
+          <div class="book-card">
+            <img src="https://picsum.photos/300/400?random=16" alt="O Poder da Ação" class="book-cover">
+            <div class="book-info">
+              <h5 class="book-title">O Poder da Ação</h5>
+              <p class="book-author">Paulo Vieira</p>
+              <div class="book-footer">
+                <span class="badge-genre">Autoajuda</span>
+                <div class="price">R$ 49,90</div>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=2" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Maria Silva</p>
-          <p><strong>Gênero:</strong> Ficção</p>
-          <p>Uma história fascinante sobre viagem no tempo e escolhas impossíveis.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 42,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- Modal Livro 3 -->
-<div class="modal fade" id="modalLivro3" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">O Último Reino</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=3" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Carlos Andrade</p>
-          <p><strong>Gênero:</strong> Ficção</p>
-          <p>Um épico medieval sobre intrigas, batalhas e heróis improváveis.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 49,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
+  </main>
 
-<!-- Modal Livro 4 -->
-<div class="modal fade" id="modalLivro4" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Mar de Estrelas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=4" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Fernanda Costa</p>
-          <p><strong>Gênero:</strong> Ficção</p>
-          <p>Uma viagem poética pelo universo e os sonhos que ele esconde.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 54,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <!-- Container para resultados filtrados -->
+  <div id="grid-container" class="container-lg row my-5"></div>
 
-<!-- Modal Livro 5 -->
-<div class="modal fade" id="modalLivro5" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">História da Tecnologia</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=5" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Daniel Prado</p>
-          <p><strong>Gênero:</strong> Não Ficção</p>
-          <p>Um mergulho na evolução tecnológica e suas transformações na sociedade.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 59,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Livro 6 -->
-<div class="modal fade" id="modalLivro6" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">O Mundo Real</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=6" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Ana Souza</p>
-          <p><strong>Gênero:</strong> Não Ficção</p>
-          <p>Análises de fatos reais que moldam nosso dia a dia e a sociedade.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 64,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Livro 7 -->
-<div class="modal fade" id="modalLivro7" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Ciência e Futuro</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=7" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Roberto Lima</p>
-          <p><strong>Gênero:</strong> Não Ficção</p>
-          <p>Explorando as tendências científicas e seus impactos no futuro.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 72,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Livro 8 -->
-<div class="modal fade" id="modalLivro8" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Histórias da Vida</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=8" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Clara Martins</p>
-          <p><strong>Gênero:</strong> Não Ficção</p>
-          <p>Relatos e aprendizados inspiradores de pessoas comuns.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 58,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Livro 9 -->
-<div class="modal fade" id="modalLivro9" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Aventura no Espaço</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=9" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Joana Melo</p>
-          <p><strong>Gênero:</strong> Infantil</p>
-          <p>História divertida de uma viagem pelo universo cheia de surpresas.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 29,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Livro 10 -->
-<div class="modal fade" id="modalLivro10" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">O Castelo Encantado</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=10" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Pedro Gomes</p>
-          <p><strong>Gênero:</strong> Infantil</p>
-          <p>Encantadora história de castelos mágicos e amigos leais.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 32,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Livro 11 -->
-<div class="modal fade" id="modalLivro11" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Os Amigos da Floresta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=11" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Lucas Ferreira</p>
-          <p><strong>Gênero:</strong> Infantil</p>
-          <p>Uma divertida aventura com animais da floresta.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 27,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Livro 12 -->
-<div class="modal fade" id="modalLivro12" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Magia das Cores</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=12" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Patrícia Alves</p>
-          <p><strong>Gênero:</strong> Infantil</p>
-          <p>Um conto colorido sobre amizade e imaginação.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 34,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Livro 13 -->
-<div class="modal fade" id="modalLivro13" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">O Poder do Hábito</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body d-flex gap-4">
-        <img src="https://picsum.photos/300/400?random=13" class="img-fluid rounded shadow-sm" alt="">
-        <div>
-          <p><strong>Autor:</strong> Charles Duhigg</p>
-          <p><strong>Gênero:</strong> Autoajuda</p>
-          <p>Como hábitos moldam nossa vida e como transformá-los para melhor.</p>
-          <p class="fs-5 fw-bold text-primary">R$ 44,90</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-    <!-- Footer -->
-    <footer class="text-center py-4">
-        <p>© 2024 Livraria Terra. Todos os direitos reservados.</p>
-        <p>Desenvolvido por <a href="#" target="_blank">Sua Empresa</a></p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Script de busca -->
+  <script src="inicial.js"></script>
 </body>
 
 </html>
