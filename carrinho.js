@@ -25,7 +25,7 @@
   class Carrinho {
     constructor(chaveLocal = "livraria_carrinho") {
       this.chaveLocal = chaveLocal; // chave usada no localStorage
-      this.itens = [];
+      this.itens = []; 
       this.carregar();
       this.pegarElementos();
       this.renderizar();
@@ -113,9 +113,12 @@
       if (this.itens.length === 0) {
         el.innerHTML = `<div class="text-center text-muted py-4">Carrinho vazio</div>`;
         this.elTotal.textContent = centavosParaReal(0);
+        this._updateBadges(); //para atulizar a bolinha 
         return;
       }
-        // Eventos da interface
+
+
+        // Monta os itens no carrinho no DOM
       this.itens.forEach((item) => {
         const itemEl = document.createElement("div");
         itemEl.className = "list-group-item d-flex gap-3 align-items-start";
@@ -164,7 +167,10 @@
       });
 
       this.elTotal.textContent = centavosParaReal(this.totalCentavos());
+      this._updateBadges();
     }
+
+
     //atualiza número de itens no ícone do carrinho
     _updateBadges() {
     const count = this.totalItens(); 
