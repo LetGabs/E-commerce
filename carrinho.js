@@ -1,7 +1,7 @@
 (function () {
-  "use strict";
+  "use strict"; 
 
-  // --- Helpers ---
+  //funções auxiliares 
   function textoParaCentavos(precoTexto) {
     if (!precoTexto) return 0;
     let cleaned = precoTexto
@@ -9,7 +9,7 @@
       .replace("R$", "")
       .replace(/\u00A0/g, "");
     cleaned = cleaned.replace(/\./g, "").replace(",", ".");
-    let num = parseFloat(cleaned);
+    let num = parseFloat(cleaned); // virar número decimal
     if (Number.isNaN(num)) return 0;
     return Math.round(num * 100);
   }
@@ -21,10 +21,10 @@
     });
   }
 
-  // --- Classe Carrinho ---
+  // Classe Carrinho 
   class Carrinho {
     constructor(chaveLocal = "livraria_carrinho") {
-      this.chaveLocal = chaveLocal;
+      this.chaveLocal = chaveLocal; // chave usada no localStorage
       this.itens = [];
       this.carregar();
       this.pegarElementos();
@@ -115,7 +115,7 @@
         this.elTotal.textContent = centavosParaReal(0);
         return;
       }
-
+        // Eventos da interface
       this.itens.forEach((item) => {
         const itemEl = document.createElement("div");
         itemEl.className = "list-group-item d-flex gap-3 align-items-start";
@@ -191,10 +191,10 @@
 
   }
 
-  // --- Instância ---
+  // Instância 
   const carrinho = new Carrinho();
 
-  // --- Abrir offcanvas pelos botões da navbar ---
+  //  Abrir offcanvas pelos botões da navbar 
   document.querySelectorAll("#btnAbrirCarrinho, #btnAbrirCarrinhoNav").forEach((btn) => {
     btn.addEventListener("click", () => {
       const offEl = document.getElementById("offcanvasCarrinho");
@@ -205,7 +205,7 @@
     });
   });
 
-  // --- Botões "Adicionar" nos modais ---
+  // Botões "Adicionar" nos modais 
   document.querySelectorAll(".modal .modal-footer .btn-primary").forEach((btn) => {
     btn.addEventListener("click", () => {
       const modal = btn.closest(".modal");
@@ -262,7 +262,7 @@
     });
   });
 
-  // --- Botões extras ---
+  // Botões extras 
   document.getElementById("btnLimparCarrinho")?.addEventListener("click", () => {
     carrinho.limpar();
   });
