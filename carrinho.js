@@ -273,6 +273,6 @@
       alert("Seu carrinho está vazio.");
       return;
     }
-    window.location.href = "lara/checkout.html?total=" + total;
+    window.location.href = "checkout.html?total=" + total;
   });
 })();
