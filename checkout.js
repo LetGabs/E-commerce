@@ -12,7 +12,7 @@ const dadosGerais = {
   validade: document.getElementById('validade'),
   cvv: document.getElementById('cvv'),
 };
-
+ 
 let statusBox = document.getElementById("cep-status");
 if (!statusBox) {
   statusBox = document.createElement("div");
