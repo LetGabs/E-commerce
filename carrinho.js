@@ -273,6 +273,6 @@
       alert("Seu carrinho está vazio.");
       return;
     }
-    alert("LEVAR PARA LARA Total: " + centavosParaReal(total));
+    window.location.href = "lara/checkout.html?total=" + total;
   });
 })();
