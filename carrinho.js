@@ -1,5 +1,5 @@
 (function () {
-  "use strict"; 
+  "use strict";
 
   //funções auxiliares 
   function textoParaCentavos(precoTexto) {
@@ -25,7 +25,7 @@
   class Carrinho {
     constructor(chaveLocal = "livraria_carrinho") {
       this.chaveLocal = chaveLocal; // chave usada no localStorage
-      this.itens = []; 
+      this.itens = [];
       this.carregar();
       this.pegarElementos();
       this.renderizar();
@@ -113,12 +113,12 @@
       if (this.itens.length === 0) {
         el.innerHTML = `<div class="text-center text-muted py-4">Carrinho vazio</div>`;
         this.elTotal.textContent = centavosParaReal(0);
-    
+
         return;
       }
 
 
-        // Monta os itens no carrinho no DOM
+      // Monta os itens no carrinho no DOM
       this.itens.forEach((item) => {
         const itemEl = document.createElement("div");
         itemEl.className = "list-group-item d-flex gap-3 align-items-start";
@@ -167,7 +167,7 @@
       });
 
       this.elTotal.textContent = centavosParaReal(this.totalCentavos());
-      
+
     }
 
 
@@ -198,12 +198,10 @@
       const titleEl = modal.querySelector(".modal-title");
       const title = titleEl ? titleEl.textContent.trim() : "Produto";
 
-      const priceEl =
-        modal.querySelector(".fs-5.fw-bold.text-primary") ||
-        modal.querySelector(".fs-5.fw-bold") ||
-        modal.querySelector(".text-primary.fs-5");
-      const priceText = priceEl ? priceEl.textContent.trim() : null;
+      const priceEl = modal.querySelector(".preco-modal");
+      const priceText = priceEl ? priceEl.textContent.replace("Preço:", "").trim() : null;
       const priceCents = textoParaCentavos(priceText);
+
 
       let author = "";
       let genre = "";
@@ -234,7 +232,7 @@
       try {
         const bsModal = bootstrap.Modal.getInstance(modal);
         if (bsModal) bsModal.hide();
-      } catch {}
+      } catch { }
 
       // abre carrinho automaticamente
       const offEl = document.getElementById("offcanvasCarrinho");

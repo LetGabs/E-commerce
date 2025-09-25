@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+  <!-- Navbar -->
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg shadow-sm">
     <div class="container-lg">
@@ -19,53 +19,18 @@
         <i class="bi bi-book"></i>
         <span>Livraria Terra</span>
       </a>
+
       <div class="d-flex align-items-center gap-2 ms-auto">
         <div class="d-none d-md-block me-3">
           <input id="searchInput" class="search-input" type="search" placeholder="Buscar títulos, autores..."
             aria-label="Pesquisar" />
-=======
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg shadow-sm">
-        <div class="container-lg">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <i class="bi bi-book"></i>
-                <span>Livraria Terra</span>
-            </a>
-            <div class="d-flex align-items-center gap-2 ms-auto">
-                <div class="d-none d-md-block me-3">
-                    <input class="search-input" type="search" placeholder="Buscar títulos, autores..."
-                        aria-label="Pesquisar" />
-                </div>
-                </button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto fs-5">
-                    <li class="nav-item">
-                        <a class="nav-link active d-flex align-items-center" href="#catalogo">
-                            <i class="bi bi-list-ul me-2"></i> Catálogo
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="btnAbrirCarrinhoNav" class="nav-link d-flex align-items-center"
-                            href="javascript:void(0)">
-                            <i class="bi bi-cart me-2"></i> Carrinho
-                        </a>
-                    </li>
-                </ul>
-            </div>
->>>>>>> d6e983036f698abdeefabeb02fa219aa1c904235
         </div>
-
-        </button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto fs-5">
           <li class="nav-item">
@@ -82,6 +47,7 @@
       </div>
     </div>
   </nav>
+
 
   <!-- Hero -->
   <section class="hero container-lg">
@@ -376,7 +342,8 @@
           <div>
             <p><strong>Autor:</strong> Autor Exemplo</p>
             <p><strong>Categoria:</strong> Ficção</p>
-            <p><strong>Preço:</strong> R$ 39,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 39,90</p>
+
             <p>Um romance envolvente sobre segredos da natureza e mistérios familiares.</p>
           </div>
         </div>
@@ -401,7 +368,8 @@
           <div>
             <p><strong>Autor:</strong> Maria Silva</p>
             <p><strong>Categoria:</strong> Ficção</p>
-            <p><strong>Preço:</strong> R$ 42,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 42,90</p>
+
             <p>Uma história emocionante que atravessa o tempo e os corações.</p>
           </div>
         </div>
@@ -426,7 +394,8 @@
           <div>
             <p><strong>Autor:</strong> Carlos Andrade</p>
             <p><strong>Categoria:</strong> Ficção</p>
-            <p><strong>Preço:</strong> R$ 49,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 49,90</p>
+
             <p>Aventura épica em terras desconhecidas e reinos perdidos.</p>
           </div>
         </div>
@@ -451,7 +420,8 @@
           <div>
             <p><strong>Autor:</strong> Fernanda Costa</p>
             <p><strong>Categoria:</strong> Ficção</p>
-            <p><strong>Preço:</strong> R$ 54,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 54,90</p>
+
             <p>Romance cósmico que explora os mistérios do universo e da alma humana.</p>
           </div>
         </div>
@@ -477,7 +447,8 @@
           <div>
             <p><strong>Autor:</strong> Daniel Prado</p>
             <p><strong>Categoria:</strong> Não Ficção</p>
-            <p><strong>Preço:</strong> R$ 59,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 59,90</p>
+
             <p>Um mergulho detalhado na evolução tecnológica do mundo moderno.</p>
           </div>
         </div>
@@ -502,7 +473,8 @@
           <div>
             <p><strong>Autor:</strong> Ana Souza</p>
             <p><strong>Categoria:</strong> Não Ficção</p>
-            <p><strong>Preço:</strong> R$ 64,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 64,90</p>
+
             <p>Exploração da vida cotidiana e da sociedade contemporânea.</p>
           </div>
         </div>
@@ -527,7 +499,8 @@
           <div>
             <p><strong>Autor:</strong> Roberto Lima</p>
             <p><strong>Categoria:</strong> Não Ficção</p>
-            <p><strong>Preço:</strong> R$ 72,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 72,90</p>
+
             <p>Discussões sobre avanços científicos e tendências para o futuro.</p>
           </div>
         </div>
@@ -552,7 +525,8 @@
           <div>
             <p><strong>Autor:</strong> Clara Martins</p>
             <p><strong>Categoria:</strong> Não Ficção</p>
-            <p><strong>Preço:</strong> R$ 58,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 58,90</p>
+
             <p>Relatos inspiradores de pessoas reais e suas trajetórias.</p>
           </div>
         </div>
@@ -578,7 +552,8 @@
           <div>
             <p><strong>Autor:</strong> Joana Melo</p>
             <p><strong>Categoria:</strong> Infantil</p>
-            <p><strong>Preço:</strong> R$ 29,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 29,90</p>
+
             <p>Uma divertida aventura pelo espaço para crianças curiosas.</p>
           </div>
         </div>
@@ -603,7 +578,8 @@
           <div>
             <p><strong>Autor:</strong> Lucas Pereira</p>
             <p><strong>Categoria:</strong> Infantil</p>
-            <p><strong>Preço:</strong> R$ 34,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 34,90</p>
+
             <p>Descubra um mundo mágico cheio de aventuras e surpresas.</p>
           </div>
         </div>
@@ -628,7 +604,8 @@
           <div>
             <p><strong>Autor:</strong> Mariana Lima</p>
             <p><strong>Categoria:</strong> Infantil</p>
-            <p><strong>Preço:</strong> R$ 27,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 27,90</p>
+
             <p>Histórias encantadoras sobre animais e aventuras na floresta.</p>
           </div>
         </div>
@@ -653,7 +630,8 @@
           <div>
             <p><strong>Autor:</strong> Ana Clara</p>
             <p><strong>Categoria:</strong> Infantil</p>
-            <p><strong>Preço:</strong> R$ 31,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 31,90</p>
+
             <p>Aprenda sobre os animais de forma divertida e interativa.</p>
           </div>
         </div>
@@ -679,7 +657,8 @@
           <div>
             <p><strong>Autor:</strong> Charles Duhigg</p>
             <p><strong>Categoria:</strong> Autoajuda</p>
-            <p><strong>Preço:</strong> R$ 39,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 39,90</p>
+
             <p>Descubra como hábitos moldam sua vida e como transformá-los.</p>
           </div>
         </div>
@@ -704,7 +683,8 @@
           <div>
             <p><strong>Autor:</strong> Dale Carnegie</p>
             <p><strong>Categoria:</strong> Autoajuda</p>
-            <p><strong>Preço:</strong> R$ 42,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 47,90</p>
+
             <p>Técnicas comprovadas para melhorar relacionamentos pessoais e profissionais.</p>
           </div>
         </div>
@@ -728,7 +708,8 @@
           <div>
             <p><strong>Autor:</strong> Carol Dweck</p>
             <p><strong>Categoria:</strong> Autoajuda</p>
-            <p><strong>Preço:</strong> R$ 45,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 45,90</p>
+
             <p>Como a mentalidade influencia seu sucesso e crescimento pessoal.</p>
           </div>
         </div>
@@ -753,7 +734,8 @@
           <div>
             <p><strong>Autor:</strong> Paulo Vieira</p>
             <p><strong>Categoria:</strong> Autoajuda</p>
-            <p><strong>Preço:</strong> R$ 49,90</p>
+            <p class="preco-modal"><strong>Preço:</strong> R$ 49,90</p>
+
             <p>Descubra como agir de forma eficaz e alcançar seus objetivos.</p>
           </div>
         </div>
@@ -765,41 +747,39 @@
     </div>
   </div>
 
-<!-- CARRINHO -->
-<section class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrinho" aria-labelledby="offcanvascarrinhoLabel"> <!-- Utilização do Bootstrap para abrir o carrinho na lateral -->
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasCarrinhoLabel">Carrinho de Compras</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button> 
-  </div>
+  <!-- CARRINHO -->
+  <section class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrinho"
+    aria-labelledby="offcanvascarrinhoLabel"> <!-- Utilização do Bootstrap para abrir o carrinho na lateral -->
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasCarrinhoLabel">Carrinho de Compras</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
 
-<<<<<<< HEAD
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="inicial.js"></script>
-=======
-  <div class="offcanvas-body d-flex flex-column"> 
-    <div id="itens-carrinho" class="list-group mb-3"></div>
-    
-    <div class="mt-auto">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <strong>Total:</strong>
-        <strong id="total-carrinho">R$ 0,00</strong>
-      </div>
-      <div class="d-flex gap-2">
+    <div class="offcanvas-body d-flex flex-column">
+      <div id="itens-carrinho" class="list-group mb-3"></div>
+
+      <div class="mt-auto">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <strong>Total:</strong>
+          <strong id="total-carrinho">R$ 0,00</strong>
+        </div>
+        <div class="d-flex gap-2">
           <button id="btnLimparCarrinho" class="btn btn-outline-secondary flex-grow-1">Limpar</button>
           <button id="btnFinalizarCompra" class="btn btn-primary flex-grow-1">Finalizar Compra</button>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-4">
-        <p>© 2024 Livraria Terra. Todos os direitos reservados.</p>
-        <p>Desenvolvido por <a href="#" target="_blank">Sua Empresa</a></p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="carrinho.js"></script>
->>>>>>> d6e983036f698abdeefabeb02fa219aa1c904235
+  <!-- Footer -->
+  <footer class="text-center py-4">
+    <p>© 2024 Livraria Terra. Todos os direitos reservados.</p>
+    <p>Desenvolvido por <a href="#" target="_blank">Sua Empresa</a></p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="carrinho.js"></script>
+  <script src="inicial.js"></script>
+  <script src="checkout.js"></script>
 </body>
 
 </html>
