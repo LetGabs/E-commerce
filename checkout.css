@@ -24,7 +24,7 @@ body {
   padding-top: 76px;
 }
 
-/* Navbar igual à original */
+/* Navbar */
 .navbar {
   background: linear-gradient(90deg, var(--surface), rgba(255, 255, 255, 0.85));
   backdrop-filter: blur(6px);
@@ -94,28 +94,48 @@ body {
   height: fit-content;
 }
 
+/* Resumo do Pedido */
 .summary-list {
   list-style: none;
   padding: 0;
   margin: 0 0 1.5rem;
 }
 
+.empty-message {
+  text-align: center;
+  padding: 1rem;
+  color: var(--muted-text);
+  font-style: italic;
+}
+
 .summary-list li {
   display: flex;
   justify-content: space-between;
-  padding: .5rem 0;
-  border-bottom: 1px solid var(--muted);
-  font-size: .95rem;
+  align-items: center;
+  padding: .75rem 0;
+  border-bottom: 1px dashed var(--muted);
+  transition: background var(--transition-fast);
+}
+
+.summary-list li:hover {
+  background: rgba(15, 98, 254, 0.05);
+  border-radius: var(--radius-md);
+  padding-left: .5rem;
 }
 
 .summary-total {
   display: flex;
   justify-content: space-between;
-  font-weight: 800;
-  font-size: 1.1rem;
+  align-items: center;
+  margin-top: 1rem;
+  font-weight: 900;
+  font-size: 1.25rem;
   color: var(--cta);
+  border-top: 2px solid var(--cta);
+  padding-top: 1rem;
 }
 
+/* Botão confirmar */
 .btn-confirm {
   background: var(--cta);
   color: #fff;
@@ -124,14 +144,17 @@ body {
   border: none;
   font-weight: 700;
   cursor: pointer;
-  transition: background var(--transition-fast);
+  width: 100%;
+  transition: background var(--transition-fast), transform 0.15s;
+  margin-top: 1rem;
 }
 
 .btn-confirm:hover {
   background: #b81f5e;
+  transform: scale(1.02);
 }
 
-/* Footer igual ao original */
+/* Footer */
 footer {
   background-color: var(--primary);
   color: #f7f6f3;
